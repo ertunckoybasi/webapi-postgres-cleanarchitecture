@@ -1,3 +1,6 @@
+using Application;
+using Application.Mapping;
+using AutoMapper;
 using Infrastructure.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,7 +25,18 @@ namespace WebApi
         {
             
             services.AddControllers();
+            services.AddApplicationRegister();
             services.AddInfrastructure(Configuration);
+
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new EmployeeMappingProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });

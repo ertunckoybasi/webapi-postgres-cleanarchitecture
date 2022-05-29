@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Persistence.Data;
@@ -15,9 +16,7 @@ namespace WebApi.Extensions
                 {
                     var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
                     dbContext.Database.Migrate();
-
-                    //ProductContextSeed.SeedTask(productContext).Wait();
-
+                    ApplicationDbContextSeed.SeedSampleDataAsync(dbContext).Wait();
                 }
                 // catch (Exception)
                 {
