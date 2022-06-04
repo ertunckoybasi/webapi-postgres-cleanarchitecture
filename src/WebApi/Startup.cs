@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 
 namespace WebApi
 {
@@ -27,6 +28,11 @@ namespace WebApi
             services.AddControllers();
             services.AddApplicationRegister();
             services.AddInfrastructure(Configuration);
+
+            services.AddControllers().AddNewtonsoftJson(o =>
+            {
+                o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
 
             var mappingConfig = new MapperConfiguration(mc =>
             {

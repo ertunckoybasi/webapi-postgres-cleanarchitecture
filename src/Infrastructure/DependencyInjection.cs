@@ -17,8 +17,7 @@ namespace Infrastructure.Persistence
                         b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)), ServiceLifetime.Singleton);
 
             //Add Repositories
-
-
+          
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
             return services;

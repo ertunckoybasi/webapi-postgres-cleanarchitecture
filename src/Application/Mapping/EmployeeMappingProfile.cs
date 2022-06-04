@@ -10,7 +10,6 @@ namespace Application.Mapping
         {
             CreateMap<Employee, EmployeeDTO>();
             CreateMap<EmployeeDTO, Employee>();
-
         }
     }
 }

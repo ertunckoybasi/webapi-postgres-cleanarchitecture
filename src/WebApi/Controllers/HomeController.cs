@@ -35,11 +35,10 @@ namespace WebApi.Controllers
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         public async Task<ActionResult<IEnumerable<EmployeeDTO>>> Getemployees()
         {
-            var query = new GetAllEmployeesQuery();
+            var query = new GetAllEmployeesWithDepartmentQuery();
             var employeeResponse = await _mediator.Send(query);
             if (!employeeResponse.Any()) return NoContent();
             return Ok(employeeResponse);
-
         }
     }
 }

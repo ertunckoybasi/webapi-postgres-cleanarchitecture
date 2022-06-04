@@ -18,7 +18,7 @@ namespace Application.Features.EmployeeFeature.Commands.CreateEmployee
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
-        public DepartmentDTO Department { get; set; }
+        //public Department Department { get; set; }
     }
     public class EmployeeCreateHandler : IRequestHandler<CreateEmployeeCommand, EmployeeDTO>
     {

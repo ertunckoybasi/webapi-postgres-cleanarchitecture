@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,11 +15,16 @@ namespace Application.Features.EmployeeFeature.Dtos
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
-        public DepartmentDTO Department { get; set; }
+        public Department Department { get; set; }
     }
 
     public class DepartmentDTO
     {
-        public string Name { get; set; }
+        public int Id { get; set; }
+        public string DepName { get; set; }
+        public bool InUse { get; set; }
+        public DateTime InsertedAt { get; set; }
+
     }
+
 }
